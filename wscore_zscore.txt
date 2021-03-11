@@ -1,0 +1,21 @@
+I want to predict GM volume in a group of patients based on their degree of cognitive impairment, corrected for age and sex. To have a more ¡®disease specific¡¯ measure of cognition, I use cognitive performance-scores in a large group (N=500) of healthy controls (HC) as a reference.
+
+Me and my supervisor discussed two methods for doing this (the w-score vs. the z-score method):
+
+1. w-score method:
+
+a. calculate the effect of age and sex on cognitive score in the HC group (cognition = a + (b * age) + (c * sex))
+
+b. predict cognitive score in the patient group based on the regression coefficients we found in the HC group
+
+c. for each patient, subtract this predicted score from his actual score, and divide by the SD of the HC¡¯s residuals (w-score = (cognition.obs ? cognition.pred)/SDres)
+
+d. perform a regression in which w-score predicts GM volume (GM volume = a + (b * w-score))
+
+2. z-score method:
+
+a. calculate the mean and SD of cognitive score in the HC group
+
+b. for each patient, subtract the HC¡¯s mean from his actual cognitive score, and divide by the HC¡¯s SD (z-score = (cognition.obs ? cognition.mean)/SD)
+
+c. perform a regression in which z-score predicts GM volume, using age and sex as covariates (GM volume = a + (b * z-score) + (c * age) + (d * sex))
